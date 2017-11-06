@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Glyphicon, Breadcrumb } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Breadcrumbs } from 'react-breadcrumbs-dynamic';

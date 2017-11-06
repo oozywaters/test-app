@@ -5,7 +5,6 @@ import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
-import IconButton from 'material-ui/IconButton';
 import ActionAdd from 'material-ui/svg-icons/content/add-circle';
 // import
 import ProjectCard from '../../components/ProjectCard';

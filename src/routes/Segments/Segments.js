@@ -19,7 +19,7 @@ class Segments extends Component {
         <BreadcrumbsItem to={`/projects/${project.id}/segments`}>
           Segments
         </BreadcrumbsItem>
-        Keywords!
+        Segments Here
       </div>
     );
   }

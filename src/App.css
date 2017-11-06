@@ -5,3 +5,7 @@
 .App__content {
   padding-top: 20px;
 }
+
+.breadcrumb {
+  background: 0 !important;
+}

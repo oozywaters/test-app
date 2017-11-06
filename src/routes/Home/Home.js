@@ -5,7 +5,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="">
-        Welcome Home!
+        Welcome to The Test App!
       </div>
     );
   }
