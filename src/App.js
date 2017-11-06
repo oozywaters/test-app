@@ -25,9 +25,9 @@ class App extends Component {
           open={this.state.isSidebarOpen}
           onRequestChange={this.toggleSideMenu}
         />
-        <div className="container App__content">
+        <div className="container-fluid App__content">
           <div className="row">
-            <div className="col s12">
+            <div className="col-md-12">
               <BreadcrumbsWithIcon />
               {getRoutes()}
             </div>
