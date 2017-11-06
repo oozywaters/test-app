@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import SideMenu from './components/SideMenu';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { BreadcrumbsWithIcon } from './components/Breadcrumbs';
 import './App.css';
-import routes from './routes'
+import routes from './routes';
 
 class App extends Component {
   state = {
@@ -16,41 +17,40 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <AppBar
-            title="App Bar"
-            onLeftIconButtonTouchTap={() => this.toggleSideMenu(true)}
-          />
-          <SideMenu
-            open={this.state.isSidebarOpen}
-            onRequestChange={this.toggleSideMenu}
-          />
-          <div className="container">
-            <div className="row">
-              <div className="col s12">
-                <Switch>
-                  {routes.map(route => (
-                    <Route
-                      key={route.key}
-                      path={route.path}
-                      exact={route.exact}
-                      component={route.main}
-                    />
-                  ))}
-                </Switch>
-              </div>
+      <div className="App">
+        <AppBar
+          title="App Bar"
+          onLeftIconButtonTouchTap={() => this.toggleSideMenu(true)}
+        />
+        <SideMenu
+          open={this.state.isSidebarOpen}
+          onRequestChange={this.toggleSideMenu}
+        />
+        <div className="container App__content">
+          <div className="row">
+            <div className="col s12">
+              <BreadcrumbsWithIcon />
+              <Switch>
+                {routes.map(route => (
+                  <Route
+                    key={route.key}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.main}
+                  />
+                ))}
+              </Switch>
             </div>
           </div>
-        {/*<header className="App-header">*/}
-          {/*<img src={logo} className="App-logo" alt="logo" />*/}
-          {/*<h1 className="App-title">Welcome to React</h1>*/}
-        {/*</header>*/}
-        {/*<p className="App-intro">*/}
-          {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
-        {/*</p>*/}
         </div>
-      </Router>
+      {/*<header className="App-header">*/}
+        {/*<img src={logo} className="App-logo" alt="logo" />*/}
+        {/*<h1 className="App-title">Welcome to React</h1>*/}
+      {/*</header>*/}
+      {/*<p className="App-intro">*/}
+        {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
+      {/*</p>*/}
+      </div>
     );
   }
 }
