@@ -1,3 +1,8 @@
+import _ from 'lodash';
+
+const CREATE = 'projects/CREATE';
+const REMOVE = 'projects/REMOVE';
+
 const initialState = {
   data: {
     1: {
@@ -23,8 +28,44 @@ const initialState = {
   }
 };
 
+export function create(projectName = 'New Project') {
+  return {
+    type: CREATE,
+    payload: {
+      projectName,
+    },
+  };
+}
+
+export function remove(project) {
+  return {
+    type: REMOVE,
+    payload: {
+      project,
+    },
+  }
+}
+
 export default function projectsReducer(state = initialState, action) {
   switch (action.type) {
+    case CREATE:
+      const uniqueId = _.uniqueId('proj');
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [uniqueId]: {
+            id: uniqueId,
+            name: action.payload.projectName,
+            content: 'Some project content',
+          },
+        },
+      };
+    case REMOVE:
+      return {
+        ...state,
+        data: _.omit(state.data, action.payload.project.id),
+      };
     default:
       return state;
   }

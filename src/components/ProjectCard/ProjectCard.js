@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import emptyFunction from 'fbjs/lib/emptyFunction';
+import { Card, CardHeader, CardText, CardActions } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
 import './ProjectCard.css';
 
 export default class ProjectCard extends Component {
   static propTypes = {
     project: T.shape().isRequired,
+    onRemove: T.func,
+  };
+
+  static defaultProps = {
+    onRemove: emptyFunction,
   };
 
   get projectLink() {
@@ -22,6 +29,13 @@ export default class ProjectCard extends Component {
         <CardText>
           {project.content}
         </CardText>
+        <CardActions>
+          <RaisedButton
+            label="Remove"
+            onClick={() => this.props.onRemove(project)}
+            primary
+          />
+        </CardActions>
       </Card>
     );
   }

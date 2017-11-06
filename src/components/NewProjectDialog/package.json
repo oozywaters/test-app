@@ -1,0 +1,6 @@
+{
+  "name": "NewProjectDialog",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./NewProjectDialog.js"
+}
