@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import logo from './logo.svg';
+import SideMenu from './components/SideMenu';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import routes from './routes'
 
 class App extends Component {
   state = {
     isSidebarOpen: false,
   };
 
-  openSideMenu = () => {
-    this.setState({ isSidebarOpen: true });
+  toggleSideMenu = isSidebarOpen => {
+    this.setState({ isSidebarOpen });
   };
 
   render() {
     return (
-      <div className="App">
-        <AppBar
-          title="App Bar"
-          onLeftIconButtonTouchTap={this.openSideMenu}
-        />
-        <Drawer
-          docked={false}
-          width={400}
-          open={this.state.isSidebarOpen}
-          onRequestChange={isSidebarOpen => this.setState({ isSidebarOpen })}
-        >
-          Side Menu
-        </Drawer>
+      <Router>
+        <div className="App">
+          <AppBar
+            title="App Bar"
+            onLeftIconButtonTouchTap={() => this.toggleSideMenu(true)}
+          />
+          <SideMenu
+            open={this.state.isSidebarOpen}
+            onRequestChange={this.toggleSideMenu}
+          />
+          <Switch>
+            {routes.map(route => (
+              <Route
+                key={route.key}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </Switch>
         {/*<header className="App-header">*/}
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
           {/*<h1 className="App-title">Welcome to React</h1>*/}
@@ -35,7 +43,8 @@ class App extends Component {
         {/*<p className="App-intro">*/}
           {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
         {/*</p>*/}
-      </div>
+        </div>
+      </Router>
     );
   }
 }
