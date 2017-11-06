@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <AppBar
-          title="App Bar"
+          title="The Test App"
           onLeftIconButtonTouchTap={() => this.toggleSideMenu(true)}
         />
         <SideMenu
