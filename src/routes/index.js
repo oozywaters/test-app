@@ -1,25 +1,16 @@
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+
 import Home from './Home';
 import Projects from './Projects';
 import Logout from "./Logout";
 
-export default [
-  {
-    key: 'home',
-    path: '/',
-    exact: true,
-    sidebar: null,
-    main: Home,
-  },
-  {
-    key: 'projects',
-    path: '/projects',
-    sidebar: null,
-    main: Projects,
-  },
-  {
-    key: 'logout',
-    path: '/',
-    sidebar: null,
-    main: Logout,
-  },
-];
+export default function getRoutes() {
+  return (
+    <Switch>
+      <Route path='/' component={Home} exact />
+      <Route path='/projects' component={Projects}/>
+      <Route path='/logout' component={Logout} />
+    </Switch>
+  );
+}

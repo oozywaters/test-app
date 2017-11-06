@@ -16,7 +16,7 @@ const initialState = {
       content: 'Project 3 Content',
     },
     4: {
-      id: 3,
+      id: 4,
       name: 'Project 4',
       content: 'Project 4 Content',
     },

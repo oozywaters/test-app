@@ -2,12 +2,15 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import T from 'prop-types';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux'
 import ProjectCard from '../../components/ProjectCard';
+import ProjectDetails from '../ProjectDetails';
 
 class Projects extends Component {
   static propTypes = {
     projects: T.shape().isRequired,
+    match: T.shape().isRequired,
   };
 
   get projects() {
@@ -16,18 +19,19 @@ class Projects extends Component {
       return null;
     }
     return _.map(projects, project => (
-      <ProjectCard project={project} />
+      <ProjectCard key={project.id} project={project} />
     ));
   }
 
   render() {
-    console.log(this.props.projects);
+    const { match } = this.props;
     return (
       <div>
-        <BreadcrumbsItem to="/projects">
+        <BreadcrumbsItem glyph="list" to="/projects">
           Projects
         </BreadcrumbsItem>
-        {this.projects}
+        <Route exact path={match.url} component={() => this.projects} />
+        <Route path={`${match.url}/:projectId`} component={ProjectDetails} />
       </div>
     );
   }
