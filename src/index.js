@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import './index.css';
@@ -13,7 +14,9 @@ const store = createStore(history);
 
 const rootComponent = (
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider>
+      <App />
+    </MuiThemeProvider>
   </Provider>
 );
 
