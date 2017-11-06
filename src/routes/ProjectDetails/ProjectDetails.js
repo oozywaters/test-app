@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import T from 'prop-types';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Keywords from '../Keywords';
+import Segments from '../Segments';
+import Workflows from '../Workflows';
 
 class ProjectDetails extends Component {
   static propTypes = {
@@ -11,18 +15,33 @@ class ProjectDetails extends Component {
     }).isRequired,
   };
 
-  render() {
+  get projectContent() {
     const { project } = this.props;
     if (!project) {
       return null;
     }
     return (
-      <div>
-        <BreadcrumbsItem to={`projects/${project.id}`}>
-          {project.id}
-        </BreadcrumbsItem>
+      <div className="">
         <h1>{project.name}</h1>
         <p>{project.content}</p>
+      </div>
+    )
+  }
+
+  render() {
+    const { project, match } = this.props;
+    if (!project) {
+      return null;
+    }
+    return (
+      <div>
+        <BreadcrumbsItem to={match.url}>
+          <b>{project.id}</b>
+        </BreadcrumbsItem>
+        <Route exact path={match.url} component={() => this.projectContent} />
+        <Route exact path="/projects/:projectId/keywords" component={Keywords} />
+        <Route exact path="/projects/:projectId/segments" component={Segments} />
+        <Route exact path="/projects/:projectId/workflows" component={Workflows} />
       </div>
     );
   }

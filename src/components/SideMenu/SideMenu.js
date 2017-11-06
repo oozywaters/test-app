@@ -5,7 +5,6 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import Divider from 'material-ui/Divider';
 import ActionExit from 'material-ui/svg-icons/action/exit-to-app';
 import FolderOpen from 'material-ui/svg-icons/file/folder-open';
 import { Route, NavLink } from 'react-router-dom';
