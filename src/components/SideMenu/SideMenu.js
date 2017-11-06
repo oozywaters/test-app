@@ -5,9 +5,11 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 import ActionExit from 'material-ui/svg-icons/action/exit-to-app';
 import FolderOpen from 'material-ui/svg-icons/file/folder-open';
-import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
+import ProjectMenu from '../ProjectMenu';
 import './SideMenu.css';
 
 export default class SideMenu extends Component {
@@ -26,6 +28,7 @@ export default class SideMenu extends Component {
       <Drawer open>
         <AppBar title="Menu" showMenuIconButton={false} />
         <Menu>
+          <Route path="/projects/:projectId" component={ProjectMenu} />
           <MenuItem
             primaryText="Projects"
             leftIcon={<FolderOpen />}
