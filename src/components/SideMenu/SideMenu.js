@@ -7,7 +7,8 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import ActionExit from 'material-ui/svg-icons/action/exit-to-app';
 import FolderOpen from 'material-ui/svg-icons/file/folder-open';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import './SideMenu.css';
 
 export default class SideMenu extends Component {
   static propTypes = {
@@ -22,22 +23,18 @@ export default class SideMenu extends Component {
 
   render() {
     return (
-      <Drawer
-        docked={false}
-        open={this.props.open}
-        onRequestChange={this.props.onRequestChange}
-      >
+      <Drawer open>
         <AppBar title="Menu" showMenuIconButton={false} />
         <Menu>
           <MenuItem
             primaryText="Projects"
             leftIcon={<FolderOpen />}
-            containerElement={<Link to="/projects" />}
+            containerElement={<NavLink to="/projects" activeClassName="menu-item_active" />}
           />
           <MenuItem
             primaryText="Logout"
             leftIcon={<ActionExit />}
-            containerElement={<Link to="/logout" />}
+            containerElement={<NavLink to="/logout" activeClassName="menu-item_active" />}
           />
         </Menu>
       </Drawer>

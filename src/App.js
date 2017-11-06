@@ -26,16 +26,22 @@ class App extends Component {
             open={this.state.isSidebarOpen}
             onRequestChange={this.toggleSideMenu}
           />
-          <Switch>
-            {routes.map(route => (
-              <Route
-                key={route.key}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
-          </Switch>
+          <div className="container">
+            <div className="row">
+              <div className="col s12">
+                <Switch>
+                  {routes.map(route => (
+                    <Route
+                      key={route.key}
+                      path={route.path}
+                      exact={route.exact}
+                      component={route.main}
+                    />
+                  ))}
+                </Switch>
+              </div>
+            </div>
+          </div>
         {/*<header className="App-header">*/}
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
           {/*<h1 className="App-title">Welcome to React</h1>*/}
